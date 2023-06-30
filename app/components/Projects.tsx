@@ -1,0 +1,121 @@
+import { MdOpenInBrowser } from "react-icons/md";
+import { BsGithub } from "react-icons/bs";
+import Link from "next/link";
+import SectionHead from "./SectionHead";
+
+const Project = () => {
+  const projects = [
+    {
+      name: "Mind Ful Move",
+      description:
+        "A yoga and meditation learner school.Role based Full Stack website. Instructor can create and delete their class. Admin change status of class and student can add to cart and payment via stripe. Technologies use React, React Query, React hook form, Stripe. Nodejs and Mongodb",
+      link: "https://mindfulmove.netlify.app",
+      githubClinet: "https://github.com/shahjalal-bu/mind-ful-move-client",
+      githubServer: "https://github.com/shahjalal-bu/mind-ful-move-server",
+      image: "./project5.png",
+    },
+    {
+      name: "Edu Toys Hub",
+      description:
+        "Implementation of admin dashboard for multi vendor. Implementation of product create, delete , update system . Technologies uses React, JavaScript, Tailwind Css, Daisy UI,Firebase, React Form Hook, Express, Mongodb",
+      link: "https://edu-toys-fun.web.app/",
+      githubClinet: "https://github.com/shahjalal-bu/edu-toy-hub-client",
+      githubServer: "https://github.com/shahjalal-bu/edu-toy-hub-server",
+      image: "./project1.png",
+    },
+    {
+      name: "Task Navigator",
+      description:
+        "Full task manager app. Implementation firebase authentication. Implementation of team and project create, delete , update and user to team system .Technologies use React, Redux, react-dnd, JavaScript, Tailwind CSS, Firebase, React Form Hook, Express, Mongodb, Mongoose",
+      githubClinet: "https://github.com/shahjalal-bu/project-manager",
+      githubServer: "https://github.com/shahjalal-bu/project-manager-backend",
+      link: "https://project-manager-shahjalal.netlify.app/",
+      image: "./project4.png",
+    },
+    {
+      name: "Creation Vision",
+      description:
+        "Full task invoice generator app. Implementation firebase authentication. Implementation of invoice create, delete , update .Technologies use React, JavaScript, Bootstrap,Firebase, React Form Hook, Express, Mongodb",
+      link: "https://cvbd.netlify.app/",
+      // githubClinet: "https://github.com/shahjalal-bu/mind-ful-move-client",
+      // githubServer: "https://github.com/shahjalal-bu/mind-ful-move-client",
+      image: "./project2.png",
+    },
+    {
+      name: "Task Master",
+      description:
+        "Full task todo app. Implementation firebase authentication. Implementation of todo create, delete , update .Technologies use React, JavaScript, Tailwind CSS,Firebase, Express, Mongodb",
+      githubClinet:
+        "https://github.com/shahjalal-bu/task-management-app-client",
+      githubServer:
+        "https://github.com/shahjalal-bu/task-management-application-server",
+      link: "https://incredible-fudge-66fc78.netlify.app/",
+      image: "./project6.png",
+    },
+    {
+      name: "School Quiz",
+      description:
+        "A quiz taker app. Implementation firebase authentication. Implementation of invoice create, delete , update. Technologies use React, JavaScript,CSS3,Firebase, Express, Mongodb",
+      githubClinet:
+        "https://github.com/shahjalal-bu/quiz-app-react-and-firebase",
+      // githubServer: "https://github.com/shahjalal-bu/mind-ful-move-client",
+      link: "https://react-firebase-quiz-app.netlify.app",
+      image: "./project3.png",
+    },
+  ];
+
+  return (
+    <div className="px-5 py-5 sm:py-16 rounded-lg my-2" id="projects">
+      <SectionHead title="Portfolio" subtitle="Check out some of my works!" />
+      <div className="grid sm:grid-cols-3  rounded-xl gap-2 overflow-hidden">
+        {projects.map((el) => (
+          <div className="bg-linear-2 rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+            <figure className="mb-2">
+              <img
+                src={el?.image}
+                alt=""
+                className="rounded transition-all hover:grayscale "
+              />
+            </figure>
+            <div className="rounded-lg p-4 bg-linear-2 flex flex-col">
+              <div>
+                <h5 className="text-white text-2xl font-bold leading-none mb-2">
+                  {el?.name}
+                </h5>
+                <span className="text-slate-200 leading-none">
+                  {el?.description}
+                </span>
+              </div>
+              <div className="flex justify-between items-center mt-2">
+                <div className="flex gap-1">
+                  {el?.githubClinet && (
+                    <Link href={el?.githubClinet}>
+                      <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
+                        <BsGithub size={20} /> Client
+                      </button>
+                    </Link>
+                  )}
+                  {el?.githubServer && (
+                    <Link href={el?.githubServer}>
+                      <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
+                        <BsGithub size={20} /> Server
+                      </button>
+                    </Link>
+                  )}
+                  <Link href={el?.link}>
+                    <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
+                      <MdOpenInBrowser size={20} /> Live
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Project;
+
