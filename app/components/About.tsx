@@ -14,7 +14,7 @@ const About = () => {
     "Express js",
   ];
   return (
-   <div id="about" className="mt-[-100px] pt-[100px]">  
+   <div id="about" className="mt-[-100px] pt-[100px] mb-10">  
      <SectionHead title="About me" subtitle="Learn me who i am!" />
      <div className="flex flex-col items-center sm:flex-row p-2  rounded-xl overflow-hidden">
       <div className="max-w-full sm:max-w-xs sm:p-5 ">
