@@ -92,13 +92,13 @@ export default function Header() {
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
            <div className="font-bold text-2xl">
-          {"<"} <span className="text-red-500">Shah</span>
+          {"<"} <span className="text-amber-500">Shah</span>
           <span className="text-blue-500">Jalal</span> {"/>"}
         </div>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <Button variant="gradient" size="sm" className="hidden lg:inline-block" onClick={visitLinkedin}>
-          <span>Let's talk!</span>
+          <span>Let&apos;s talk!</span>
         </Button>
         <IconButton
           variant="text"
@@ -142,7 +142,7 @@ export default function Header() {
         <div className="container mx-auto">
           {navList}
           <Button variant="gradient" size="sm" fullWidth className="mb-2" onClick={visitLinkedin}>
-            <span>Let's talk!</span>
+            <span>Let&apos;s talk!</span>
           </Button>
         </div>
       </Collapse >

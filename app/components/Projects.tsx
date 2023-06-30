@@ -2,6 +2,7 @@ import { MdOpenInBrowser } from "react-icons/md";
 import { BsGithub } from "react-icons/bs";
 import Link from "next/link";
 import SectionHead from "./SectionHead";
+import Image from "next/image";
 
 const Project = () => {
   const projects = [
@@ -12,7 +13,7 @@ const Project = () => {
       link: "https://mindfulmove.netlify.app",
       githubClinet: "https://github.com/shahjalal-bu/mind-ful-move-client",
       githubServer: "https://github.com/shahjalal-bu/mind-ful-move-server",
-      image: "./project5.png",
+      image: "/project5.png",
     },
     {
       name: "Edu Toys Hub",
@@ -21,7 +22,7 @@ const Project = () => {
       link: "https://edu-toys-fun.web.app/",
       githubClinet: "https://github.com/shahjalal-bu/edu-toy-hub-client",
       githubServer: "https://github.com/shahjalal-bu/edu-toy-hub-server",
-      image: "./project1.png",
+      image: "/project1.png",
     },
     {
       name: "Task Navigator",
@@ -30,7 +31,7 @@ const Project = () => {
       githubClinet: "https://github.com/shahjalal-bu/project-manager",
       githubServer: "https://github.com/shahjalal-bu/project-manager-backend",
       link: "https://project-manager-shahjalal.netlify.app/",
-      image: "./project4.png",
+      image: "/project4.png",
     },
     {
       name: "Creation Vision",
@@ -39,7 +40,7 @@ const Project = () => {
       link: "https://cvbd.netlify.app/",
       // githubClinet: "https://github.com/shahjalal-bu/mind-ful-move-client",
       // githubServer: "https://github.com/shahjalal-bu/mind-ful-move-client",
-      image: "./project2.png",
+      image: "/project2.png",
     },
     {
       name: "Task Master",
@@ -50,7 +51,7 @@ const Project = () => {
       githubServer:
         "https://github.com/shahjalal-bu/task-management-application-server",
       link: "https://incredible-fudge-66fc78.netlify.app/",
-      image: "./project6.png",
+      image: "/project6.png",
     },
     {
       name: "School Quiz",
@@ -60,22 +61,18 @@ const Project = () => {
         "https://github.com/shahjalal-bu/quiz-app-react-and-firebase",
       // githubServer: "https://github.com/shahjalal-bu/mind-ful-move-client",
       link: "https://react-firebase-quiz-app.netlify.app",
-      image: "./project3.png",
+      image: "/project3.png",
     },
   ];
 
   return (
-    <div className="px-5 py-5 sm:py-16 rounded-lg my-2" id="projects">
+    <div className="mt-[-80px] pt-[80px]" id="projects">
       <SectionHead title="Portfolio" subtitle="Check out some of my works!" />
-      <div className="grid sm:grid-cols-3  rounded-xl gap-2 overflow-hidden">
+      <div className="grid sm:grid-cols-3  rounded-xl gap-2 mb-10">
         {projects.map((el) => (
-          <div className="bg-linear-2 rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
+          <div key={el.link} className="bg-linear-2 border-2 border-[#14315c] rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300">
             <figure className="mb-2">
-              <img
-                src={el?.image}
-                alt=""
-                className="rounded transition-all hover:grayscale "
-              />
+              <Image src={el?.image} width={700} height={700} className="rounded transition-all hover:grayscale " alt={el.name} />
             </figure>
             <div className="rounded-lg p-4 bg-linear-2 flex flex-col">
               <div>
@@ -90,21 +87,21 @@ const Project = () => {
                 <div className="flex gap-1">
                   {el?.githubClinet && (
                     <Link href={el?.githubClinet}>
-                      <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
-                        <BsGithub size={20} /> Client
+                      <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
+                        <BsGithub size={15} /> Client
                       </button>
                     </Link>
                   )}
                   {el?.githubServer && (
                     <Link href={el?.githubServer}>
-                      <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
-                        <BsGithub size={20} /> Server
+                      <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
+                        <BsGithub size={15} /> Server
                       </button>
                     </Link>
                   )}
                   <Link href={el?.link}>
-                    <button className="rounded-lg px-2 py-1 bg-purple-500 text-blue-100 hover:bg-teal-600 duration-300 flex gap-x-2 items-center">
-                      <MdOpenInBrowser size={20} /> Live
+                    <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
+                      <MdOpenInBrowser size={15} /> Live
                     </button>
                   </Link>
                 </div>

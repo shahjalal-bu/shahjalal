@@ -29,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${grandHotel.variable} ${luckiestGuy.variable}`}>
       <body className={lato.className}>
+        <div className='max-w-6xl mx-auto'>
         {children}
+        </div>
+ 
         </body>
     </html>
   )

@@ -18,7 +18,7 @@ const Contact = () => {
 
 
   return (
-    <div id='contact'>
+    <div id='contact' className="mt-[-100px] pt-[100px]">
       <SectionHead title="Contact me" subtitle="Ask me anythings!" />
       <div className="flex flex-col sm:flex-row p-2  rounded-xl overflow-hidden">
       

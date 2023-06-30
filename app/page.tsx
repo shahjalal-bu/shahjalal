@@ -35,9 +35,9 @@ export default function Home() {
             <div> Programmer</div>
           </div>
           <div className="hero-footer flex items-center md:gap-5 mt-5 sm:mt-14 gap-1">
-            <div className=" px-4 py-1.5 bg-black text-white inline-block rounded-3xl">
-              Contact me
-            </div>
+           
+              <a href="#contact" className=" px-4 py-1.5 bg-black text-white inline-block rounded-3xl">Contact me</a>
+       
             <a href="https://github.com/shahjalal-bu">
               <div className=" p-1 rounded-lg flex justify-center items-center">
                 <AiFillGithub size={30} />
