@@ -36,19 +36,19 @@ export default function Home() {
           </div>
           <div className="hero-footer flex items-center md:gap-5 mt-5 sm:mt-14 gap-1">
            
-              <a href="#contact" className=" px-4 py-1.5 bg-black text-white inline-block rounded-3xl">Contact me</a>
+              <a target="_blank" href="#contact" className=" px-4 py-1.5 bg-black text-white inline-block rounded-3xl">Contact me</a>
        
-            <a href="https://github.com/shahjalal-bu">
+            <a target="_blank" href="https://github.com/shahjalal-bu">
               <div className=" p-1 rounded-lg flex justify-center items-center">
                 <AiFillGithub size={30} />
               </div>
             </a>
-            <a href="https://www.linkedin.com/in/shahjalal-bu/">
+            <a target="_blank" href="https://www.linkedin.com/in/shahjalal-bu/">
               <div className=" p-1 rounded-lg flex justify-center items-center">
                 <AiFillLinkedin size={30} />
               </div>
             </a>
-            <a href="https://fb.com/shahjalal.bu">
+            <a target="_blank" href="https://fb.com/shahjalal.bu">
               <div className=" p-1 rounded-lg flex justify-center items-center">
                 <AiFillFacebook size={30} />
               </div>

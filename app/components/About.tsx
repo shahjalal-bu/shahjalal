@@ -1,4 +1,4 @@
-import { BsDownload } from "react-icons/bs";
+import { BsDownload, BsEye } from "react-icons/bs";
 import SectionHead from "./SectionHead";
 import Image from "next/image";
 
@@ -52,9 +52,15 @@ const About = () => {
           ))}
         </div>
         <div className="flex mt-6">
-          <a
+          <a target="_blank"
             href="https://drive.google.com/file/d/1zAwVVJaEiEsW5YBEIsiYEV8uPe3BgJi1/view?usp=drive_link"
-            className="flex items-center gap-2 bg-black  text-white px-4 py-2 rounded mr-4"
+            className="flex items-center gap-2 bg-amber-800   text-black px-4 py-2 rounded mr-4 transition-all hover:scale-90"
+          >
+            <BsEye color={'#fff'} /> View Resume
+          </a>
+          <a target="_blank"
+            href="https://drive.google.com/uc?export=download&id=1zAwVVJaEiEsW5YBEIsiYEV8uPe3BgJi1"
+            className="flex items-center gap-2 bg-black  text-white px-4 py-2 rounded mr-4 transition-all hover:scale-90"
           >
             <BsDownload /> Get Resume
           </a>
