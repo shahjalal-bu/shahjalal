@@ -7,21 +7,44 @@ import Project from "./components/Projects";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useRef, useState } from "react";
 import Preloader from "./components/Preloader";
 import GoToTop from "./components/GotoTop";
+const ScrollDetector = React.forwardRef((props, ref) => {
+  'use client'
+  const divRefs = useRef([]);
+  const [active,setActive] =  useState<String>('home');
 
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    };
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+         
 
-export default function Home() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  useEffect(()=> setIsLoading(false),[]);
+          setActive(entry.target.getAttribute("id"));
+        }
+      });
+    }, options);
+
+    divRefs.current.forEach((div) => {
+      observer.observe(div);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <ThemeProvider>
-      {isLoading && <Preloader />}
-    {!isLoading && <main>
-      <Header/>
-      <div className="flex flex-col-reverse sm:flex-row-reverse  gap-2 sm:min-h-[90vh]">
+    <main>
+      <Header active={active}/>
+      <div className="flex flex-col-reverse sm:flex-row-reverse  gap-2 sm:min-h-[90vh]" id="home" ref={(component) => (divRefs.current[0] =component)}>
         <div className="rounded-lg flex-1 flex flex-col justify-center p-5 sm:p-10  shadow-sm mb-2">
           <div className="text-cyan-400 text-xl sm:mt-14">Hello! I am</div>
           <h1 className="text-5xl sm:text-7xl  font-luckiestGuy">Md Shahjalal</h1>
@@ -64,13 +87,34 @@ export default function Home() {
           />
         </div>
       </div>
-      <About />
-      <Project />
+      <About innerRef={(component) => (divRefs.current[1] = component)} />
+      <Project  innerRef={(component) => (divRefs.current[2] = component)} />
       {/* <Blogs /> */}
-      <Contact />
+      <Contact innerRef={(component) => (divRefs.current[3] = component)} />
       <Footer />
       <GoToTop />
-    </main>}
+    </main>
+  );
+});
+
+
+export  const Home=React.forwardRef(()=>{
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  useEffect(() => {
+    setIsLoading(false)
+   
+  }, []);
+
+
+  return (
+    <ThemeProvider>
+      {isLoading && <Preloader />}
+    {!isLoading && <ScrollDetector/>}
     </ThemeProvider>
   )
-}
+})
+
+
+
+
+export default Home

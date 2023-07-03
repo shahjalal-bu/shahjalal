@@ -5,7 +5,11 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import SectionHead from './SectionHead';
 
 
-const Contact = () => {
+const Contact = ({
+  innerRef
+}:{
+  innerRef: (component)=>void
+}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -18,7 +22,7 @@ const Contact = () => {
 
 
   return (
-    <div id='contact' className="mt-[-100px] pt-[100px]">
+    <div id='contact' className="mt-[-100px] pt-[100px]" ref={innerRef}>
       <SectionHead title="Contact me" subtitle="Ask me anythings!" />
       <div className="flex flex-col sm:flex-row p-2  rounded-xl overflow-hidden">
       

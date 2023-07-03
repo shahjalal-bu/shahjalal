@@ -4,7 +4,11 @@ import Link from "next/link";
 import SectionHead from "./SectionHead";
 import Image from "next/image";
 
-const Project = () => {
+const Project = ({
+  innerRef
+}:{
+  innerRef: (component)=>void
+}) => {
   const projects = [
     {
       name: "Mind Ful Move",
@@ -66,7 +70,7 @@ const Project = () => {
   ];
 
   return (
-    <div className="mt-[-80px] pt-[80px]" id="projects">
+    <div className="mt-[-80px] pt-[80px]" id="projects" ref={innerRef}>
       <SectionHead title="Portfolio" subtitle="Check out some of my works!" />
       <div className="grid sm:grid-cols-3  rounded-xl gap-2 mb-10">
         {projects.map((el) => (

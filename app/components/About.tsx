@@ -3,7 +3,11 @@ import SectionHead from "./SectionHead";
 import Image from "next/image";
 
 
-const About = () => {
+const About = ({
+  innerRef
+}:{
+  innerRef: (component)=>void
+}) => {
   const skills = [
     "JavaScript (ES6+)",
     "TypeScript",
@@ -14,7 +18,7 @@ const About = () => {
     "Express js",
   ];
   return (
-   <div id="about" className="mt-[-100px] pt-[100px] mb-10">  
+   <div id="about" ref={innerRef} className="mt-[-100px] pt-[100px] mb-10">  
      <SectionHead title="About me" subtitle="Learn me who i am!" />
      <div className="flex flex-col items-center sm:flex-row p-2  rounded-xl overflow-hidden">
       <div className="max-w-full sm:max-w-xs sm:p-5 ">
