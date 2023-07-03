@@ -9,15 +9,9 @@ module.exports = withMT( {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-
+  darkmode: "class",
   theme: {
-    // extend:{
-    //   fontFamily:{
-    //     lato: ["var(--font-lato)"],
-    //     grandHotel: ["var(--font-grand-hotel)"],
-    //     luckiest: ["var(--font-luckiest)"]
-    //   }
-    // }
+
     extend: {
       fontFamily: {
         lato: ["var(--font-lato)"],

@@ -24,7 +24,7 @@ export default function Home() {
       <div className="flex flex-col-reverse sm:flex-row-reverse  gap-2 sm:min-h-[90vh]">
         <div className="rounded-lg flex-1 flex flex-col justify-center p-5 sm:p-10  shadow-sm mb-2">
           <div className="text-cyan-400 text-xl sm:mt-14">Hello! I am</div>
-          <h1 className="text-5xl sm:text-8xl font-extrabold">Md Shahjalal</h1>
+          <h1 className="text-5xl sm:text-7xl  font-luckiestGuy">Md Shahjalal</h1>
           <h2 className="text-cyan-400 font-bold text-3xl sm:text-5xl my-1 sm:my-3">
             Full Stack Developer
           </h2>

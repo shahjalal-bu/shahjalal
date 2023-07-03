@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${grandHotel.variable} ${luckiestGuy.variable}`}>
-      <body className={lato.className}>
+      <body className="light-body dark:dark-body">
         <div className='max-w-6xl mx-auto px-2'>
         {children}
         </div>

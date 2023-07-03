@@ -86,24 +86,24 @@ const Project = () => {
               <div className="flex justify-between items-center mt-2">
                 <div className="flex gap-1">
                   {el?.githubClinet && (
-                    <Link href={el?.githubClinet}>
+                    <a href={el?.githubClinet} target="_blank">
                       <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
                         <BsGithub size={15} /> Client
                       </button>
-                    </Link>
+                    </a>
                   )}
                   {el?.githubServer && (
-                    <Link href={el?.githubServer}>
+                    <a href={el?.githubServer} target="_blank">
                       <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
                         <BsGithub size={15} /> Server
                       </button>
-                    </Link>
+                    </a>
                   )}
-                  <Link href={el?.link}>
+                  <a href={el?.link} target="_blank">
                     <button className="rounded px-1 py-0.5 bg-[#14315c] text-blue-100 hover:bg-[#14315ccb] duration-300 flex gap-x-2 items-center">
                       <MdOpenInBrowser size={15} /> Live
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

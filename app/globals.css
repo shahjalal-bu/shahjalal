@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+@layer utilities{
+.light-body {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 57%, rgba(230,247,255,1) 100%);
+}
+.dark-body {
   background-image: linear-gradient(
     to right top,
     #19173b,
@@ -19,4 +24,5 @@ body {
     #14315c
   );
   color: #fff;
+}
 }
