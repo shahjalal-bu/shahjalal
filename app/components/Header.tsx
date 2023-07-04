@@ -66,11 +66,6 @@ const handleDarkMode = () => {
     window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
 
-  useEffect(()=>{
-    const currentURL = window.scroll;
-    console.dir(currentURL);
-
-  })
  
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -79,7 +74,7 @@ const handleDarkMode = () => {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="/" className={`flex items-center ${active ==='home'?"text-red-500": 'text-black dark:text-white'}`}>
+        <a href="#home" className={`flex items-center ${active ==='home'?"text-amber-500": 'text-black dark:text-white'}`}>
           Home
         </a>
       </Typography>
@@ -89,7 +84,7 @@ const handleDarkMode = () => {
   
         className="p-1 font-normal"
       >
-        <a href="#about" className={`flex items-center ${active ==='about'?"text-red-500": 'text-black dark:text-white'}`}>
+        <a href="#about" className={`flex items-center ${active ==='about'?"text-amber-500": 'text-black dark:text-white'}`}>
           About me
         </a>
       </Typography>
@@ -98,7 +93,7 @@ const handleDarkMode = () => {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="#projects" className={`flex items-center ${active ==='projects'?"text-red-500": 'text-black dark:text-white'}`}>
+        <a href="#projects" className={`flex items-center ${active ==='projects'?"text-amber-500": 'text-black dark:text-white'}`}>
           Projects
         </a>
       </Typography>
@@ -108,7 +103,7 @@ const handleDarkMode = () => {
 
         className="p-1 font-normal"
       >
-        <a href="#contact" className={`flex items-center ${active ==='contact'?"text-red-500": 'text-black dark:text-white'}`}>
+        <a href="#contact" className={`flex items-center ${active ==='contact'?"text-amber-500": 'text-black dark:text-white'}`}>
           Contact
         </a>
       </Typography>

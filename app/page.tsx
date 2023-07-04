@@ -25,8 +25,6 @@ const ScrollDetector = React.forwardRef((props, ref) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-         
-
           setActive(entry.target.getAttribute("id"));
         }
       });
