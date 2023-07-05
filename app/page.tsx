@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import React,{ useEffect, useRef, useState } from "react";
 import Preloader from "./components/Preloader";
 import GoToTop from "./components/GotoTop";
-const ScrollDetector = React.forwardRef((props, ref) => {
+const ScrollDetector  = () => {
   'use client'
   const divRefs = useRef([]);
   const [active,setActive] =  useState<String>('home');
@@ -93,10 +93,10 @@ const ScrollDetector = React.forwardRef((props, ref) => {
       <GoToTop />
     </main>
   );
-});
+}
 
 
-export  const Home=React.forwardRef(()=>{
+export  const Home=()=>{
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     setIsLoading(false)
@@ -110,7 +110,7 @@ export  const Home=React.forwardRef(()=>{
     {!isLoading && <ScrollDetector/>}
     </ThemeProvider>
   )
-})
+}
 
 
 
