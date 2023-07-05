@@ -105,6 +105,7 @@ export  const Home=()=>{
 
 
   return (
+  
     <ThemeProvider>
       {isLoading && <Preloader />}
     {!isLoading && <ScrollDetector/>}

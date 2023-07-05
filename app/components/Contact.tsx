@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import { Player } from "@lottiefiles/react-lottie-player";
 import SectionHead from './SectionHead';
+import emailjs from '@emailjs/browser';
 
 
 const Contact = ({
@@ -14,9 +15,20 @@ const Contact = ({
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
+  const handleSubmit = () => {
+    emailjs.send("service_v0z6u7l","template_gsnjgd5",{
+      user_name: name,
+      user_email: email,
+      message: message,
+      }, "w3IVSpNNtEgU9ktO2").then((result) => {
+        alert("Email sent successfully");
+        setName("");
+        setEmail("");
+        setMessage(""); 
+    }, (error) => {
+        console.log(error.text);
+    })
+
   };
 
 
@@ -35,7 +47,7 @@ const Contact = ({
             />
         </div>
         <div className="sm:w-1/2 p-8">
-          <form onSubmit={handleSubmit}>
+        
             <div className="mb-4">
               <label htmlFor="name" className="block mb-2">
                 Name
@@ -80,11 +92,12 @@ const Contact = ({
             <button
               type="submit"
               className="flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              onClick={handleSubmit}
             >
               <AiOutlineSend className="mr-2" />
               Send
             </button>
-          </form>
+          
         </div>
       </div>
     </div>
