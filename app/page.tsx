@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import React,{ useEffect, useRef, useState } from "react";
 import Preloader from "./components/Preloader";
 import GoToTop from "./components/GotoTop";
+import LoveToDo from "./components/LoveToDo";
 const ScrollDetector  = () => {
   'use client'
   const divRefs = useRef([]);
@@ -87,6 +88,7 @@ const ScrollDetector  = () => {
       </div>
       <About innerRef={(component) => (divRefs.current[1] = component)} />
       <Project  innerRef={(component) => (divRefs.current[2] = component)} />
+      <LoveToDo />
       {/* <Blogs /> */}
       <Contact innerRef={(component) => (divRefs.current[3] = component)} />
       <Footer />
