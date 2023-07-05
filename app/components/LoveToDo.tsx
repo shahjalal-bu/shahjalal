@@ -16,19 +16,19 @@ export default function LoveToDo() {
   const hobbies = [
     {
       name: "Blogging",
-      icon: <ImBlog size={30} className="text-blue-500 w-12 h-12 mb-4"/>
+      icon: <ImBlog size={30} className="text-blue-500 w-12 h-12 mb-4 mx-auto"/>
     },
     {
       name: "Traveling",
-      icon: <SiYourtraveldottv size={30}  className="text-blue-500 w-12 h-12 mb-4"/>
+      icon: <SiYourtraveldottv size={30}  className="text-blue-500 w-12 h-12 mb-4 mx-auto"/>
     },
     {
       name: "Mountain Hiking",
-      icon: <FaHiking size={30}  className="text-blue-500 w-12 h-12 mb-4"/>
+      icon: <FaHiking size={30}  className="text-blue-500 w-12 h-12 mb-4 mx-auto"/>
     },
     {
       name: "Gardening",
-      icon: <BsFillTreeFill size={30}  className="text-blue-500 w-12 h-12 mb-4"/>
+      icon: <BsFillTreeFill size={30}  className="text-blue-500 w-12 h-12 mb-4 mx-auto"/>
     },
     
   ]
@@ -37,8 +37,8 @@ export default function LoveToDo() {
         <SectionHead title='Love to do!' subtitle='Hobbies and Interests' />
         <div className="flex justify-between flex-wrap mb-10">
         {
-          hobbies.map((hobbie) => <Card key={hobbie.name} className="mt-6 w-64 !bg-inherit border-2 border-[#14315c] ">
-          <CardBody>
+          hobbies.map((hobbie) => <Card key={hobbie.name} className="mt-6 w-full  sm:w-64 !bg-inherit border-2 border-[#14315c] ">
+          <CardBody className='text-center'>
             {hobbie.icon}
             <Typography variant="h3"  className="mb-2 text-black dark:text-white">
               {hobbie.name}
