@@ -1,8 +1,10 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/neon-serverless';
+import { Pool } from '@neondatabase/serverless';
 import * as schema from './schema';
-import path from 'path';
 
-const dbPath = path.join(process.cwd(), 'sqlite.db');
-const sqlite = new Database(dbPath);
-export const db = drizzle(sqlite, { schema });
+if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is not set');
+}
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+export const db = drizzle(pool, { schema });

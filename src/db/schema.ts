@@ -1,19 +1,19 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, integer, boolean, timestamp, serial } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-export const blogSeries = sqliteTable('blog_series', {
-    id: integer('id').primaryKey({ autoIncrement: true }),
+export const blogSeries = pgTable('blog_series', {
+    id: serial('id').primaryKey(),
     slug: text('slug').notNull().unique(),
     title: text('title').notNull(),
     description: text('description').notNull(),
     coverImage: text('cover_image'),
-    published: integer('published', { mode: 'boolean' }).notNull().default(true),
-    createdAt: text('created_at').notNull().default('CURRENT_TIMESTAMP'),
-    updatedAt: text('updated_at').notNull().default('CURRENT_TIMESTAMP'),
+    published: boolean('published').notNull().default(true),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
-export const blogPosts = sqliteTable('blog_posts', {
-    id: integer('id').primaryKey({ autoIncrement: true }),
+export const blogPosts = pgTable('blog_posts', {
+    id: serial('id').primaryKey(),
     slug: text('slug').notNull().unique(),
     title: text('title').notNull(),
     excerpt: text('excerpt').notNull(),
@@ -23,11 +23,11 @@ export const blogPosts = sqliteTable('blog_posts', {
     readTime: text('read_time').notNull(),
     tags: text('tags').notNull(), // Stored as JSON string
     coverImage: text('cover_image'),
-    published: integer('published', { mode: 'boolean' }).notNull().default(true),
+    published: boolean('published').notNull().default(true),
     seriesId: integer('series_id').references(() => blogSeries.id),
     seriesOrder: integer('series_order'),
-    createdAt: text('created_at').notNull().default('CURRENT_TIMESTAMP'),
-    updatedAt: text('updated_at').notNull().default('CURRENT_TIMESTAMP'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
 export const seriesRelations = relations(blogSeries, ({ many }) => ({
