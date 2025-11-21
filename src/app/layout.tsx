@@ -1,7 +1,6 @@
 import './globals.css'
 import { Grand_Hotel, Lato, Luckiest_Guy, Inter } from "next/font/google";
 import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
 import GotoTop from '@/components/layout/goto-top'
 import Preloader from '@/components/layout/preloader'
 import { Metadata } from 'next'
@@ -90,7 +89,6 @@ export default function RootLayout({
               {children}
             </main>
             <GotoTop />
-            <Footer />
           </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>

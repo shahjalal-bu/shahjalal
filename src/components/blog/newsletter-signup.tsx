@@ -21,10 +21,10 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+    <Card className="bg-gradient-to-r from-blue-600/10 via-violet-600/10 to-blue-600/10 dark:from-blue-600/20 dark:via-violet-600/20 dark:to-blue-600/20 border-blue-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Mail className="w-6 h-6 text-primary" />
+          <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
           <CardTitle className="text-xl">Subscribe to Newsletter</CardTitle>
         </div>
         <p className="text-sm text-muted-foreground mt-2">
@@ -47,7 +47,7 @@ export default function NewsletterSignup() {
               required
               className="flex-1"
             />
-            <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button type="submit" className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white border-0">
               Subscribe
             </Button>
           </form>

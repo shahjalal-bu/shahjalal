@@ -68,7 +68,7 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-foreground">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gradient-primary pb-1">
                 {post.title}
               </h1>
 

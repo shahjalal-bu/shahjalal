@@ -8,6 +8,7 @@ import Project from "@/components/sections/projects";
 import Contact from "@/components/sections/contact";
 import LoveToDo from "@/components/sections/love-to-do";
 import Blogs from "@/components/blog/blogs";
+import Footer from "@/components/footer";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { Button } from "@/components/ui/button";
 
@@ -52,74 +53,125 @@ export default function Home() {
   if (isLoading) return null; // Or a skeleton
 
   return (
-    <div className="container mx-auto px-4">
+    <>
       <ScrollDetector />
       
-      {/* Hero Section */}
-      <div className="flex flex-col-reverse sm:flex-row-reverse gap-2 sm:min-h-[90vh] pt-20" id="home">
-        <div className="rounded-lg flex-1 flex flex-col justify-center p-5 sm:p-10 shadow-sm mb-2">
-          <div className="text-cyan-400 text-xl sm:mt-14">Hello! I am</div>
-          <h1 className="text-5xl sm:text-7xl font-luckiestGuy text-slate-900 dark:text-white">Md Shahjalal</h1>
-          <h2 className="text-cyan-400 font-bold text-3xl sm:text-5xl my-1 sm:my-3">
-            Full Stack Developer
-          </h2>
-          <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-            <div className="bg-amber-400 w-2 aspect-square rounded-full"></div>
-            <div>Web Developer</div>
-            <div className="bg-amber-400 w-2 aspect-square rounded-full"></div>
-            <div>Programmer</div>
+      {/* Hero Section - Full Width Background */}
+      <div className="relative flex flex-col-reverse sm:flex-row-reverse gap-8 sm:min-h-[90vh] pt-20 overflow-hidden" id="home">
+        {/* Animated gradient background - Full width */}
+        <div className="absolute inset-0 bg-gradient-glow bg-grid-pattern -z-10" />
+        
+        {/* Content Container */}
+        <div className="container mx-auto px-4 flex flex-col-reverse sm:flex-row-reverse gap-8">
+          <div className="rounded-2xl flex-1 flex flex-col justify-center p-6 sm:p-10 relative">
+            {/* Glowing accent */}
+            <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/20 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-0 right-0 w-72 h-72 bg-violet-500/20 rounded-full blur-[120px] -z-10" />
+            
+            <div className="text-gradient-secondary text-xl sm:text-2xl font-semibold sm:mt-14 mb-2">
+              Hello! I am
+            </div>
+            <h1 className="text-5xl sm:text-7xl font-luckiestGuy text-gradient-primary mb-2">
+              Md Shahjalal
+            </h1>
+            <h2 className="text-gradient-secondary font-bold text-3xl sm:text-5xl my-2 sm:my-4">
+              Full Stack Developer
+            </h2>
+            <div className="flex items-center gap-3 font-semibold text-foreground mb-6">
+              <div className="bg-gradient-to-r from-blue-500 to-violet-500 w-3 h-3 rounded-full glow-blue animate-pulse" />
+              <div>Web Developer</div>
+              <div className="bg-gradient-to-r from-violet-500 to-cyan-500 w-3 h-3 rounded-full glow-violet animate-pulse" />
+              <div>Programmer</div>
+            </div>
+            
+            <div className="hero-footer flex items-center md:gap-6 mt-6 sm:mt-14 gap-4 flex-wrap">
+              <Button 
+                asChild 
+                className="rounded-full bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white shadow-lg glow-blue hover:glow-violet transition-all duration-300 transform hover:scale-105"
+              >
+                <a href="#contact">Contact me</a>
+              </Button>
+         
+              <a 
+                target="_blank" 
+                href="https://github.com/shahjalal-bu" 
+                className="text-foreground hover:text-blue-500 transition-all duration-300 transform hover:scale-110"
+              >
+                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
+                  <AiFillGithub size={32} />
+                </div>
+              </a>
+              <a 
+                target="_blank" 
+                href="https://www.linkedin.com/in/shahjalal-bu/" 
+                className="text-foreground hover:text-blue-600 transition-all duration-300 transform hover:scale-110"
+              >
+                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
+                  <AiFillLinkedin size={32} />
+                </div>
+              </a>
+              <a 
+                target="_blank" 
+                href="https://fb.com/shahjalal.bu" 
+                className="text-foreground hover:text-blue-500 transition-all duration-300 transform hover:scale-110"
+              >
+                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
+                  <AiFillFacebook size={32} />
+                </div>
+              </a>
+            </div>
           </div>
           
-          <div className="hero-footer flex items-center md:gap-5 mt-5 sm:mt-14 gap-3">
-            <Button asChild className="rounded-full bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200">
-              <a href="#contact">Contact me</a>
-            </Button>
-       
-            <a target="_blank" href="https://github.com/shahjalal-bu" className="text-slate-700 dark:text-slate-300 hover:text-amber-500 transition-colors">
-              <div className="p-1 rounded-lg flex justify-center items-center">
-                <AiFillGithub size={30} />
-              </div>
-            </a>
-            <a target="_blank" href="https://www.linkedin.com/in/shahjalal-bu/" className="text-slate-700 dark:text-slate-300 hover:text-amber-500 transition-colors">
-              <div className="p-1 rounded-lg flex justify-center items-center">
-                <AiFillLinkedin size={30} />
-              </div>
-            </a>
-            <a target="_blank" href="https://fb.com/shahjalal.bu" className="text-slate-700 dark:text-slate-300 hover:text-amber-500 transition-colors">
-              <div className="p-1 rounded-lg flex justify-center items-center">
-                <AiFillFacebook size={30} />
-              </div>
-            </a>
+          <div className="rounded-2xl flex items-center justify-center p-6 sm:p-10 relative">
+            {/* Glowing effect behind animation */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-violet-500/10 rounded-2xl blur-xl" />
+            <div className="relative">
+              <Player
+                autoplay
+                loop
+                src="https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json"
+                className="w-96 h-72 drop-shadow-2xl"
+              />
+            </div>
           </div>
-        </div>
-        
-        <div className="rounded-lg flex items-center justify-center p-5 sm:p-10 shadow-sm mb-2">
-          <Player
-            autoplay
-            loop
-            src="https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json"
-            className="w-96 h-72"
-          />
         </div>
       </div>
 
-      <div id="about">
-        <About />
+      {/* Other Sections - With Container */}
+      <div className="container mx-auto px-4">
+        <div id="about">
+          <About />
+        </div>
+        
+        {/* Separator */}
+        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        
+        <div id="projects">
+          <Project />
+        </div>
+        
+        {/* Separator */}
+        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        
+        <LoveToDo />
+        
+        {/* Separator */}
+        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        
+        <div id="blog">
+          <Blogs />
+        </div>
+        
+        {/* Separator */}
+        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        
+        <div id="contact">
+          <Contact />
+        </div>
       </div>
-      
-      <div id="projects">
-        <Project />
-      </div>
-      
-      <LoveToDo />
-      
-      <div id="blog">
-        <Blogs />
-      </div>
-      
-      <div id="contact">
-        <Contact />
-      </div>
-    </div>
+
+      {/* Footer */}
+      <Footer />
+    </>
   );
 }

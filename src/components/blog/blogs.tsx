@@ -30,30 +30,24 @@ export default function Blogs() {
   }
 
   return (
-    <div id="blogs" className="py-20 px-4">
-      <div className="container mx-auto">
-        <SectionHead title="Latest Blog Posts" />
-        
-        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-          Thoughts, tutorials, and insights on web development, programming, and technology
-        </p>
+    <div id="blogs" className="py-20">
+      <SectionHead title="Latest Blog Posts" subtitle="Thoughts, tutorials, and insights on web development" />
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {latestPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+      {/* Blog Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {latestPosts.map((post) => (
+          <BlogCard key={post.id} post={post} />
+        ))}
+      </div>
 
-        {/* View All Button */}
-        <div className="text-center">
-          <Button asChild className="bg-amber-400 hover:bg-amber-500 text-black font-bold px-8 py-6 rounded-lg text-lg">
-            <Link href="/blog">
-              View All Blog Posts
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </Button>
-        </div>
+      {/* View All Button */}
+      <div className="text-center">
+        <Button asChild className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white shadow-lg glow-blue hover:glow-violet transition-all duration-300 transform hover:scale-105 px-8 py-6 text-base font-bold rounded-xl">
+          <Link href="/blog">
+            View All Blog Posts
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </Button>
       </div>
     </div>
   );

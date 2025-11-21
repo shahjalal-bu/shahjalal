@@ -68,48 +68,49 @@ const Project = () => {
   ];
 
   return (
-    <div className="mt-[-80px] pt-[80px]" id="projects">
+    <div className="py-20" id="projects">
       <SectionHead title="Portfolio" subtitle="Check out some of my works!" />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((el) => (
-          <Card key={el.link} className="bg-linear-2 border-2 border-[#14315c] overflow-hidden transform hover:translate-y-2 hover:shadow-xl transition duration-300 flex flex-col">
-            <div className="relative h-48 w-full overflow-hidden">
+          <Card key={el.link} className="bg-card border border-border overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col group">
+            <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-blue-500/5 via-violet-500/3 to-transparent">
               <Image 
                 src={el?.image} 
                 fill 
-                className="object-cover transition-all hover:scale-105" 
+                className="object-cover transition-all duration-500 group-hover:scale-110" 
                 alt={el.name} 
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <CardHeader className="p-4 pb-2">
-              <CardTitle className="text-white text-xl font-bold leading-none">
+            <CardHeader className="p-5 pb-3">
+              <CardTitle className="text-gradient-primary text-xl font-bold leading-tight">
                 {el?.name}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-4 pt-0 flex-grow">
-              <CardDescription className="text-slate-300 text-sm line-clamp-4">
+            <CardContent className="p-5 pt-0 flex-grow">
+              <CardDescription className="text-muted-foreground text-sm line-clamp-4 leading-relaxed">
                 {el?.description}
               </CardDescription>
             </CardContent>
-            <CardFooter className="p-4 pt-0 flex justify-between items-center mt-auto gap-2 flex-wrap">
+            <CardFooter className="p-5 pt-0 flex justify-between items-center mt-auto gap-2 flex-wrap">
               <div className="flex gap-2 flex-wrap">
                 {el?.githubClinet && (
-                  <Button asChild variant="outline" size="sm" className="h-7 px-2 bg-[#14315c] text-blue-100 border-none hover:bg-[#14315ccb] hover:text-white">
+                  <Button asChild variant="outline" size="sm" className="h-8 px-3 text-xs bg-gradient-to-r from-blue-500/10 to-violet-500/10 hover:from-blue-500 hover:to-violet-500 hover:text-white border-primary/20 transition-all duration-300">
                     <a href={el?.githubClinet} target="_blank">
-                      <BsGithub className="mr-1 h-3 w-3" /> Client
+                      <BsGithub className="mr-1.5 h-3.5 w-3.5" /> Client
                     </a>
                   </Button>
                 )}
                 {el?.githubServer && (
-                  <Button asChild variant="outline" size="sm" className="h-7 px-2 bg-[#14315c] text-blue-100 border-none hover:bg-[#14315ccb] hover:text-white">
+                  <Button asChild variant="outline" size="sm" className="h-8 px-3 text-xs bg-gradient-to-r from-violet-500/10 to-cyan-500/10 hover:from-violet-500 hover:to-cyan-500 hover:text-white border-primary/20 transition-all duration-300">
                     <a href={el?.githubServer} target="_blank">
-                      <BsGithub className="mr-1 h-3 w-3" /> Server
+                      <BsGithub className="mr-1.5 h-3.5 w-3.5" /> Server
                     </a>
                   </Button>
                 )}
-                <Button asChild variant="outline" size="sm" className="h-7 px-2 bg-[#14315c] text-blue-100 border-none hover:bg-[#14315ccb] hover:text-white">
+                <Button asChild variant="outline" size="sm" className="h-8 px-3 text-xs bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500 hover:to-blue-500 hover:text-white border-primary/20 transition-all duration-300">
                   <a href={el?.link} target="_blank">
-                    <MdOpenInBrowser className="mr-1 h-3 w-3" /> Live
+                    <MdOpenInBrowser className="mr-1.5 h-3.5 w-3.5" /> Live
                   </a>
                 </Button>
               </div>
@@ -122,4 +123,3 @@ const Project = () => {
 };
 
 export default Project;
-
