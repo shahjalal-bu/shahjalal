@@ -42,12 +42,15 @@ export default function TagsSidebar({ tags, selectedTag, onTagSelect }: TagsSide
             <button
               key={tag}
               onClick={() => onTagSelect(tag === selectedTag ? null : tag)}
-              className={`w-full text-left px-2 py-1.5 rounded-lg transition-all flex items-center justify-between group text-sm ${
+              className={`w-full text-left px-3 py-2 rounded-md transition-all duration-200 flex items-center justify-between group text-sm relative overflow-hidden ${
                 selectedTag === tag
-                  ? 'bg-primary/10 text-primary border border-primary/20'
-                  : 'hover:bg-muted text-muted-foreground hover:text-foreground'
+                  ? 'bg-primary/5 text-primary font-medium shadow-sm border border-primary/10'
+                  : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground border border-transparent'
               }`}
             >
+              {selectedTag === tag && (
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" />
+              )}
               <span className="flex items-center gap-2">
                 <Hash className="w-3 h-3" />
                 <span className={selectedTag === tag ? 'font-semibold' : ''}>{tag}</span>

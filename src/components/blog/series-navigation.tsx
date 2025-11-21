@@ -34,31 +34,47 @@ export default function SeriesNavigation({ series, posts, currentPostId }: Serie
         <p className="text-sm text-muted-foreground pt-1">{series.title}</p>
       </CardHeader>
       <CardContent className="space-y-1">
-        {posts.map((post, index) => (
-          <Link
-            key={post.id}
-            href={`/blog/${post.slug}`}
-            className={cn(
-              "flex items-start gap-2 p-1.5 rounded-lg transition-all text-sm",
-              post.id === currentPostId
-                ? "bg-primary/10 text-primary border-l-2 border-primary"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground border-l-2 border-transparent"
-            )}
-          >
-            <span className={cn(
-              "flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold",
-              post.id === currentPostId
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground"
-            )}>
-              {index + 1}
-            </span>
-            <span className="flex-1 line-clamp-2 font-medium text-xs">
-              {post.title}
-            </span>
-            {post.id === currentPostId && <ChevronRight className="w-3 h-3 flex-shrink-0" />}
-          </Link>
-        ))}
+        {posts.map((post, index) => {
+          const isActive = post.id === currentPostId;
+          return (
+            <Link
+              key={post.id}
+              href={`/blog/${post.slug}`}
+              className={cn(
+                "flex items-start gap-3 p-2 rounded-md transition-all duration-200 text-sm group relative overflow-hidden",
+                isActive
+                  ? "bg-primary/5 text-primary shadow-sm border border-primary/10"
+                  : "text-muted-foreground hover:bg-muted/50 hover:text-foreground border border-transparent"
+              )}
+            >
+              {isActive && (
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" />
+              )}
+              <span className={cn(
+                "flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors",
+                isActive
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-muted text-muted-foreground group-hover:bg-muted-foreground/20"
+              )}>
+                {index + 1}
+              </span>
+              <div className="flex-1 min-w-0">
+                <span className={cn(
+                  "block line-clamp-2 text-xs leading-relaxed",
+                  isActive ? "font-semibold" : "font-medium"
+                )}>
+                  {post.title}
+                </span>
+                {isActive && (
+                  <span className="text-[10px] text-primary/70 font-medium mt-0.5 block">
+                    Now Reading
+                  </span>
+                )}
+              </div>
+              {isActive && <ChevronRight className="w-3 h-3 flex-shrink-0 mt-0.5 animate-pulse" />}
+            </Link>
+          );
+        })}
         
         <div className="pt-3 mt-3 border-t border-border">
           <Link 

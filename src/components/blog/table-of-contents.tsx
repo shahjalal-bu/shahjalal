@@ -99,11 +99,11 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
                 setActiveId(heading.id);
               }}
               className={cn(
-                "block py-1.5 px-2 text-sm rounded-lg transition-all border-l-2",
-                heading.level === 3 && "pl-5",
+                "block py-1.5 px-3 text-sm transition-all duration-200 border-l-2 relative group",
+                heading.level === 3 && "pl-6",
                 activeId === heading.id
-                  ? "text-primary font-semibold bg-primary/10 border-primary"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted border-transparent"
+                  ? "border-primary text-primary font-medium bg-primary/5"
+                  : "border-transparent text-muted-foreground hover:text-foreground hover:border-border hover:bg-muted/30"
               )}
             >
               {heading.text}
