@@ -45,9 +45,11 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
 
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Sidebar - Popular Posts */}
+          {/* Left Sidebar - Table of Contents */}
           <aside className="lg:col-span-2 order-2 lg:order-1">
-            <PopularPosts posts={popularPosts} />
+            <div className="sticky top-24">
+              <TableOfContents content={post.content} />
+            </div>
           </aside>
 
           {/* Middle - Main Content */}
@@ -105,12 +107,9 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
             </div>
           </main>
 
-          {/* Right Sidebar - TOC, Series, Share */}
+          {/* Right Sidebar - Series, Popular Posts, Share */}
           <aside className="lg:col-span-2 order-3">
             <div className="sticky top-24 space-y-4">
-              {/* Table of Contents */}
-              <TableOfContents content={post.content} />
-
               {/* Series Navigation */}
               {seriesPosts.length > 0 && post.series && (
                 <SeriesNavigation 
@@ -119,6 +118,9 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
                   currentPostId={post.id} 
                 />
               )}
+
+              {/* Popular Posts */}
+              <PopularPosts posts={popularPosts} />
 
               {/* Social Share */}
               <SocialShare />
