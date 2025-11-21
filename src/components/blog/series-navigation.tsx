@@ -55,7 +55,7 @@ export default function SeriesNavigation({ series, posts, currentPostId }: Serie
               <span className={cn(
                 "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all shadow-sm mt-0.5",
                 isActive
-                  ? "bg-primary text-primary-foreground ring-2 ring-primary/20 ring-offset-1 ring-offset-background"
+                  ? "bg-primary text-white ring-2 ring-primary/20 ring-offset-1 ring-offset-background"
                   : "bg-muted text-muted-foreground group-hover:bg-muted-foreground/20"
               )}>
                 {index + 1}
@@ -63,17 +63,11 @@ export default function SeriesNavigation({ series, posts, currentPostId }: Serie
 
               <div className="flex-1 min-w-0">
                 <span className={cn(
-                  "block line-clamp-2 text-xs leading-relaxed mb-1",
+                  "block line-clamp-2 text-xs leading-relaxed",
                   isActive ? "font-bold text-foreground" : "font-medium text-muted-foreground group-hover:text-foreground"
                 )}>
                   {post.title}
                 </span>
-                
-                {isActive && (
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary animate-in fade-in slide-in-from-left-1 duration-300">
-                    Now Reading
-                  </span>
-                )}
               </div>
 
               {isActive && <ChevronRight className="w-3.5 h-3.5 flex-shrink-0 mt-1 text-primary animate-pulse" />}
