@@ -41,37 +41,42 @@ export default function SeriesNavigation({ series, posts, currentPostId }: Serie
               key={post.id}
               href={`/blog/${post.slug}`}
               className={cn(
-                "flex items-start gap-3 p-2 rounded-md transition-all duration-200 text-sm group relative overflow-hidden",
+                "flex items-start gap-3 p-3 rounded-lg transition-all duration-200 text-sm group relative overflow-hidden border",
                 isActive
-                  ? "bg-primary/5 text-primary shadow-sm border border-primary/10"
-                  : "text-muted-foreground hover:bg-muted/50 hover:text-foreground border border-transparent"
+                  ? "bg-primary/10 border-primary/20 shadow-sm"
+                  : "bg-transparent border-transparent hover:bg-muted/50 hover:border-border/50"
               )}
             >
               {isActive && (
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" />
+                <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary" />
               )}
+              
+              {/* Number Badge */}
               <span className={cn(
-                "flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors",
+                "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all shadow-sm mt-0.5",
                 isActive
-                  ? "bg-primary text-primary-foreground shadow-sm"
+                  ? "bg-primary text-primary-foreground ring-2 ring-primary/20 ring-offset-1 ring-offset-background"
                   : "bg-muted text-muted-foreground group-hover:bg-muted-foreground/20"
               )}>
                 {index + 1}
               </span>
+
               <div className="flex-1 min-w-0">
                 <span className={cn(
-                  "block line-clamp-2 text-xs leading-relaxed",
-                  isActive ? "font-semibold" : "font-medium"
+                  "block line-clamp-2 text-xs leading-relaxed mb-1",
+                  isActive ? "font-bold text-foreground" : "font-medium text-muted-foreground group-hover:text-foreground"
                 )}>
                   {post.title}
                 </span>
+                
                 {isActive && (
-                  <span className="text-[10px] text-primary/70 font-medium mt-0.5 block">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary animate-in fade-in slide-in-from-left-1 duration-300">
                     Now Reading
                   </span>
                 )}
               </div>
-              {isActive && <ChevronRight className="w-3 h-3 flex-shrink-0 mt-0.5 animate-pulse" />}
+
+              {isActive && <ChevronRight className="w-3.5 h-3.5 flex-shrink-0 mt-1 text-primary animate-pulse" />}
             </Link>
           );
         })}
