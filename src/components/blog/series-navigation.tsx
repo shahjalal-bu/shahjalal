@@ -39,24 +39,24 @@ export default function SeriesNavigation({ series, posts, currentPostId }: Serie
             key={post.id}
             href={`/blog/${post.slug}`}
             className={cn(
-              "flex items-start gap-3 p-2 rounded-lg transition-all text-sm",
+              "flex items-start gap-2 p-1.5 rounded-lg transition-all text-sm",
               post.id === currentPostId
                 ? "bg-primary/10 text-primary border-l-2 border-primary"
                 : "text-muted-foreground hover:bg-muted hover:text-foreground border-l-2 border-transparent"
             )}
           >
             <span className={cn(
-              "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+              "flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold",
               post.id === currentPostId
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted text-muted-foreground"
             )}>
               {index + 1}
             </span>
-            <span className="flex-1 line-clamp-2 font-medium">
+            <span className="flex-1 line-clamp-2 font-medium text-xs">
               {post.title}
             </span>
-            {post.id === currentPostId && <ChevronRight className="w-4 h-4 flex-shrink-0" />}
+            {post.id === currentPostId && <ChevronRight className="w-3 h-3 flex-shrink-0" />}
           </Link>
         ))}
         

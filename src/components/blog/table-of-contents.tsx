@@ -99,8 +99,8 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
                 setActiveId(heading.id);
               }}
               className={cn(
-                "block py-2 px-3 text-sm rounded-lg transition-all border-l-2",
-                heading.level === 3 && "pl-6",
+                "block py-1.5 px-2 text-sm rounded-lg transition-all border-l-2",
+                heading.level === 3 && "pl-5",
                 activeId === heading.id
                   ? "text-primary font-semibold bg-primary/10 border-primary"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted border-transparent"

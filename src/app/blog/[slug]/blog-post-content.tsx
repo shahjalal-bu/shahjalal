@@ -46,12 +46,12 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Sidebar - Popular Posts */}
-          <aside className="lg:col-span-3 order-2 lg:order-1">
+          <aside className="lg:col-span-2 order-2 lg:order-1">
             <PopularPosts posts={popularPosts} />
           </aside>
 
           {/* Middle - Main Content */}
-          <main className="lg:col-span-6 order-1 lg:order-2">
+          <main className="lg:col-span-8 order-1 lg:order-2">
             {/* Article Header */}
             <div className="mb-8">
               {/* Tags */}
@@ -106,7 +106,7 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
           </main>
 
           {/* Right Sidebar - TOC, Series, Share */}
-          <aside className="lg:col-span-3 order-3">
+          <aside className="lg:col-span-2 order-3">
             <div className="sticky top-24 space-y-4">
               {/* Table of Contents */}
               <TableOfContents content={post.content} />

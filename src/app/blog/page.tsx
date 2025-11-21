@@ -129,7 +129,7 @@ export default function BlogPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left Sidebar - Tags */}
-          <aside className="lg:col-span-3 order-2 lg:order-1">
+          <aside className="lg:col-span-2 order-2 lg:order-1">
             <TagsSidebar
               tags={allTags}
               selectedTag={selectedTag}
@@ -138,7 +138,7 @@ export default function BlogPage() {
           </aside>
 
           {/* Middle - Blog List */}
-          <main className="lg:col-span-6 order-1 lg:order-2">
+          <main className="lg:col-span-8 order-1 lg:order-2">
             {/* Search Bar */}
             <div className="mb-6 relative">
               <Input
@@ -219,7 +219,7 @@ export default function BlogPage() {
           </main>
 
           {/* Right Sidebar - Series */}
-          <aside className="lg:col-span-3 order-3">
+          <aside className="lg:col-span-2 order-3">
             <SeriesSidebar series={allSeries} />
           </aside>
         </div>

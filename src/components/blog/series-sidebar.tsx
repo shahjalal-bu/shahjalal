@@ -41,17 +41,8 @@ export default function SeriesSidebar({ series }: SeriesSidebarProps) {
           <div className="space-y-3 max-h-[60vh] overflow-y-auto custom-scrollbar">
             {series.map((item) => (
               <Link key={item.id} href={`/blog/series/${item.slug}`}>
-                <div className="group p-3 rounded-lg border border-border hover:border-primary/50 hover:bg-muted/50 transition-all cursor-pointer">
-                  {item.coverImage && (
-                    <div className="relative w-full h-24 mb-3 rounded-md overflow-hidden bg-muted">
-                      <img
-                        src={item.coverImage}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-1 line-clamp-2">
+                <div className="group p-2 rounded-lg border border-border hover:border-primary/50 hover:bg-muted/50 transition-all cursor-pointer">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-1 line-clamp-2 text-sm">
                     {item.title}
                   </h3>
                   <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
@@ -59,11 +50,11 @@ export default function SeriesSidebar({ series }: SeriesSidebarProps) {
                   </p>
                   <div className="flex items-center justify-between">
                     {item.postCount !== undefined && (
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-5">
                         {item.postCount} {item.postCount === 1 ? 'post' : 'posts'}
                       </Badge>
                     )}
-                    <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                    <ArrowRight className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
                   </div>
                 </div>
               </Link>
