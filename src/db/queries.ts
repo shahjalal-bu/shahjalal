@@ -82,6 +82,17 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | undefined>
     return post ? formatBlogPost(post) : undefined;
 }
 
+export async function getPostById(id: number): Promise<BlogPost | undefined> {
+    const post = await db.query.blogPosts.findFirst({
+        where: eq(blogPosts.id, id),
+        with: {
+            series: true,
+        },
+    });
+
+    return post ? formatBlogPost(post) : undefined;
+}
+
 export async function getAllSeries(): Promise<BlogSeries[]> {
     const series = await db.select()
         .from(blogSeries)
@@ -91,6 +102,8 @@ export async function getAllSeries(): Promise<BlogSeries[]> {
     return series.map(s => ({
         ...s,
         coverImage: s.coverImage || undefined,
+        createdAt: s.createdAt.toISOString(),
+        updatedAt: s.updatedAt.toISOString(),
     }));
 }
 
@@ -103,6 +116,8 @@ export async function getSeriesBySlug(slug: string): Promise<BlogSeries | undefi
     return series.length > 0 ? {
         ...series[0],
         coverImage: series[0].coverImage || undefined,
+        createdAt: series[0].createdAt.toISOString(),
+        updatedAt: series[0].updatedAt.toISOString(),
     } : undefined;
 }
 

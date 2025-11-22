@@ -1,9 +1,7 @@
-"use client"
-
 import Link from 'next/link';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Calendar, Clock, User } from 'lucide-react';
+import { Calendar, Clock, User, Edit } from 'lucide-react';
 import MarkdownViewer from '@/components/blog/markdown-viewer';
 import { BlogPost } from '@/db/queries';
 import TableOfContents from '@/components/blog/table-of-contents';
@@ -13,6 +11,8 @@ import PopularPosts from '@/components/blog/popular-posts';
 import NewsletterSignup from '@/components/blog/newsletter-signup';
 import CommentsSection from '@/components/blog/comments-section';
 import Breadcrumb from '@/components/blog/breadcrumb';
+import { getSession } from '@/lib/auth';
+import { Button } from '@/components/ui/button';
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -20,7 +20,7 @@ interface BlogPostContentProps {
   seriesPosts?: BlogPost[];
 }
 
-export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }: BlogPostContentProps) {
+export default async function BlogPostContent({ post, relatedPosts, seriesPosts = [] }: BlogPostContentProps) {
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -36,6 +36,10 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
     { label: 'Blogs', href: '/blog' },
     { label: post.title },
   ];
+
+  // Check if user is authenticated admin
+  const session = await getSession();
+  const isAdmin = !!session;
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
@@ -74,20 +78,32 @@ export default function BlogPostContent({ post, relatedPosts, seriesPosts = [] }
                 {post.title}
               </h1>
 
-              {/* Meta Info */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  <span>{post.author}</span>
+              {/* Meta Info and Edit Button */}
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <User className="w-4 h-4" />
+                    <span>{post.author}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    <span>{formattedDate}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    <span>{post.readTime}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>{formattedDate}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  <span>{post.readTime}</span>
-                </div>
+                
+                {/* Edit Button - Only visible to admins */}
+                {isAdmin && (
+                  <Link href={`/admin/posts/edit/${post.id}`}>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Edit className="w-4 h-4" />
+                      Edit Post
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
 

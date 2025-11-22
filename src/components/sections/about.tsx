@@ -61,47 +61,77 @@ const About = () => {
        <SectionHead title="About me" subtitle="Learn who I am!" />
 
        {/* Main Content */}
-       <div className="flex flex-col items-center lg:flex-row p-2 rounded-xl overflow-hidden gap-8">
+       <div className="flex flex-col items-start lg:flex-row p-2 rounded-xl overflow-hidden gap-8">
          {/* Left Column - Image, Work Experience, Education */}
-         <div className="max-w-full sm:max-w-md lg:max-w-sm space-y-6">
-           {/* Image Section with Gradient Border */}
-           <div className="relative group">
-             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-violet-600 to-cyan-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500"></div>
-             <div className="relative">
-               <Image
-                 src="/shahjalal2.jpg"
-                 className="rounded-2xl aspect-square object-cover ring-2 ring-background"
-                 width={500}
-                 height={500}
-                 alt="Md Shahjalal - Full Stack Developer"
-               />
-             </div>
+         <div className="w-full lg:w-[380px] space-y-6">
+           {/* Image Section - Clean and Professional */}
+           <div className="relative mx-auto w-fit">
+             <Image
+               src="/shahjalal.png"
+               className="rounded-2xl aspect-square object-cover ring-1 ring-border shadow-xl"
+               width={320}
+               height={320}
+               alt="Md Shahjalal - Full Stack Developer"
+               priority
+             />
            </div>
 
-           {/* Work Experience */}
-           <div className="p-5 rounded-xl bg-background/50 backdrop-blur-sm border border-border">
-             <div className="flex items-start gap-3 mb-3">
-               <FaBriefcase className="text-blue-500 mt-1" size={20} />
-               <div>
-                 <h4 className="font-bold text-lg text-gradient-primary">Software Engineer (Backend Developer)</h4>
-                 <p className="text-sm text-muted-foreground">Connect Auz Pty Ltd | Dec 2023 - Present</p>
+           {/* Work Experience Card */}
+           <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background to-blue-500/5 border border-border/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <div className="relative p-6 space-y-4">
+               <div className="flex items-start gap-4">
+                 <div className="p-3 rounded-xl bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors duration-300">
+                   <FaBriefcase className="text-blue-500" size={24} />
+                 </div>
+                 <div className="flex-1">
+                   <h4 className="font-bold text-lg leading-tight mb-1 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+                     Software Engineer
+                   </h4>
+                   <p className="text-sm font-medium text-foreground/70">Backend Developer</p>
+                   <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
+                     <span className="font-semibold">Connect Auz Pty Ltd</span>
+                     <span>•</span>
+                     <span>Dec 2023 - Present</span>
+                   </div>
+                 </div>
+               </div>
+               
+               <div className="space-y-2.5 pl-1">
+                 {[
+                   "Designed scalable database schemas and optimized performance",
+                   "Developed REST & GraphQL APIs with comprehensive documentation",
+                   "Implemented comprehensive testing (load, unit, e2e)",
+                   "Deployed and managed AWS cloud infrastructure"
+                 ].map((item, index) => (
+                   <div key={index} className="flex items-start gap-3 text-sm text-foreground/80">
+                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></div>
+                     <span className="leading-relaxed">{item}</span>
+                   </div>
+                 ))}
                </div>
              </div>
-             <ul className="space-y-2 text-sm text-foreground/80 ml-8 list-disc">
-               <li>Designed scalable database schemas and optimized database performance</li>
-               <li>Developed developer-friendly REST and GraphQL APIs with comprehensive documentation</li>
-               <li>Conducted API load testing, unit testing, and end-to-end testing</li>
-               <li>Deployed applications to AWS cloud infrastructure</li>
-             </ul>
            </div>
 
-           {/* Education */}
-           <div className="p-5 rounded-xl bg-background/50 backdrop-blur-sm border border-border">
-             <div className="flex items-start gap-3">
-               <FaGraduationCap className="text-violet-500 mt-1" size={20} />
-               <div>
-                 <h4 className="font-bold text-lg text-gradient-secondary">BSc in Geology and Mining</h4>
-                 <p className="text-sm text-muted-foreground">University of Barishal | 2018 - 2022</p>
+           {/* Education Card */}
+           <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background to-violet-500/5 border border-border/50 hover:border-violet-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <div className="relative p-6">
+               <div className="flex items-start gap-4">
+                 <div className="p-3 rounded-xl bg-violet-500/10 group-hover:bg-violet-500/20 transition-colors duration-300">
+                   <FaGraduationCap className="text-violet-500" size={24} />
+                 </div>
+                 <div className="flex-1">
+                   <h4 className="font-bold text-lg leading-tight mb-1 bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+                     BSc in Geology and Mining
+                   </h4>
+                   <p className="text-sm font-medium text-muted-foreground mt-2">
+                     University of Barishal
+                   </p>
+                   <p className="text-xs text-muted-foreground/70 mt-1">
+                     2018 - 2022
+                   </p>
+                 </div>
                </div>
              </div>
            </div>
