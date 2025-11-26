@@ -27,7 +27,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     
     lines.forEach((line) => {
         const trimLine = line.trim();
-        const match = trimLine.match(/^(#{1,6})\s+(.+)$/);
+        const match = trimLine.match(/^(#{2,6})\s+(.+)$/);
       console.log(match);
       if (match) {
         const level = match[1].length;
