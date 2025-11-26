@@ -22,10 +22,13 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
   useEffect(() => {
     // Parse headings from markdown content
     const lines = content.split('\n');
+    console.log(lines);
     const extractedHeadings: TOCItem[] = [];
     
     lines.forEach((line) => {
-      const match = line.match(/^(#{2,3})\s+(.+)$/);
+        const trimLine = line.trim();
+        const match = trimLine.match(/^(#{1,6})\s+(.+)$/);
+      console.log(match);
       if (match) {
         const level = match[1].length;
         const text = match[2];
