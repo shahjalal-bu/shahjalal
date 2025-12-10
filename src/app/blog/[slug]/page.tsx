@@ -24,10 +24,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `https://shahjalal.vercel.app/blog/${slug}`,
+      siteName: 'Md Shahjalal',
+      images: post.coverImage ? [
+        {
+          url: post.coverImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ] : [],
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.coverImage ? [post.coverImage] : [],
     },
   };
 }

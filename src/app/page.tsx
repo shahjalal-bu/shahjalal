@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { AiFillGithub, AiFillLinkedin, AiFillFacebook } from "react-icons/ai";
 import About from "@/components/sections/about";
@@ -11,6 +11,7 @@ import Blogs from "@/components/blog/blogs";
 import Footer from "@/components/footer";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { Button } from "@/components/ui/button";
+import { useGSAPScrollAnimations } from "@/hooks/useGSAPScrollAnimations";
 
 // Dynamically import Player to avoid SSR issues
 const Player = dynamic(
@@ -22,7 +23,8 @@ const ScrollDetector = () => {
   const { setActiveSection } = useActiveSectionContext();
   
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    // Section tracking observer (keep for navigation)
+    const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.getAttribute("id") || "home");
@@ -30,15 +32,21 @@ const ScrollDetector = () => {
       });
     }, {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // Better threshold for section detection
+      rootMargin: '-50% 0px -50% 0px',
       threshold: 0,
     });
 
+    // Observe sections for active state
     const sections = document.querySelectorAll("section[id], div[id='home']");
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => sectionObserver.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      sectionObserver.disconnect();
+    };
   }, [setActiveSection]);
+
+  // Use GSAP scroll animations
+  useGSAPScrollAnimations();
 
   return null;
 };
@@ -56,82 +64,73 @@ export default function Home() {
     <>
       <ScrollDetector />
       
-      {/* Hero Section - Full Width Background */}
-      <div className="relative flex flex-col-reverse sm:flex-row-reverse gap-8 sm:min-h-[90vh] pt-20 overflow-hidden" id="home">
-        {/* Animated gradient background - Full width */}
-        <div className="absolute inset-0 bg-gradient-glow bg-grid-pattern -z-10" />
-        
-        {/* Content Container */}
-        <div className="container mx-auto px-4 flex flex-col-reverse sm:flex-row-reverse gap-8">
-          <div className="rounded-2xl flex-1 flex flex-col justify-center p-6 sm:p-10 relative">
-            {/* Glowing accent */}
-            <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/20 rounded-full blur-[120px] -z-10" />
-            <div className="absolute bottom-0 right-0 w-72 h-72 bg-violet-500/20 rounded-full blur-[120px] -z-10" />
+      {/* Hero Section - Clean Connecteam Style */}
+      <div className="relative min-h-[90vh] bg-white dark:bg-gray-900 pt-20" id="home">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             
-            <div className="text-gradient-secondary text-xl sm:text-2xl font-semibold sm:mt-14 mb-2">
-              Hello! I am
-            </div>
-            <h1 className="text-5xl sm:text-7xl font-luckiestGuy text-gradient-primary mb-2">
-              Md Shahjalal
-            </h1>
-            <h2 className="text-gradient-secondary font-bold text-3xl sm:text-5xl my-2 sm:my-4">
-              Full Stack Developer
-            </h2>
-            <div className="flex items-center gap-3 font-semibold text-foreground mb-6">
-              <div className="bg-gradient-to-r from-blue-500 to-violet-500 w-3 h-3 rounded-full glow-blue animate-pulse" />
-              <div>Web Developer</div>
-              <div className="bg-gradient-to-r from-violet-500 to-cyan-500 w-3 h-3 rounded-full glow-violet animate-pulse" />
-              <div>Programmer</div>
+            {/* Left Content */}
+            <div className="text-center lg:text-left space-y-6" data-animate>
+              <div className="space-y-4">
+                <p className="text-blue-600 dark:text-blue-400 font-semibold text-lg">
+                  Hello! I am
+                </p>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white">
+                  Md Shahjalal
+                </h1>
+                <h2 className="text-3xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300">
+                  Full Stack Developer
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
+                  Building modern web applications with clean code and exceptional user experiences
+                </p>
+              </div>
+              
+              {/* CTA and Social Links */}
+              <div className="flex flex-col sm:flex-row gap-4 items-center lg:items-start lg:justify-start justify-center pt-8">
+                <Button 
+                  asChild 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-lg transition-colors shadow-sm"
+                >
+                  <a href="#contact">Get In Touch</a>
+                </Button>
+                
+                <div className="flex gap-3">
+                  <a 
+                    target="_blank" 
+                    href="https://github.com/shahjalal-bu" 
+                    className="p-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all text-gray-700 dark:text-gray-300"
+                  >
+                    <AiFillGithub size={24} />
+                  </a>
+                  <a 
+                    target="_blank" 
+                    href="https://www.linkedin.com/in/shahjalal-bu/" 
+                    className="p-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all text-gray-700 dark:text-gray-300"
+                  >
+                    <AiFillLinkedin size={24} />
+                  </a>
+                  <a 
+                    target="_blank" 
+                    href="https://fb.com/shahjalal.bu" 
+                    className="p-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all text-gray-700 dark:text-gray-300"
+                  >
+                    <AiFillFacebook size={24} />
+                  </a>
+                </div>
+              </div>
             </div>
             
-            <div className="hero-footer flex items-center md:gap-6 mt-6 sm:mt-14 gap-4 flex-wrap">
-              <Button 
-                asChild 
-                className="rounded-full bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white shadow-lg glow-blue hover:glow-violet transition-all duration-300 transform hover:scale-105"
-              >
-                <a href="#contact">Contact me</a>
-              </Button>
-         
-              <a 
-                target="_blank" 
-                href="https://github.com/shahjalal-bu" 
-                className="text-foreground hover:text-blue-500 transition-all duration-300 transform hover:scale-110"
-              >
-                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
-                  <AiFillGithub size={32} />
-                </div>
-              </a>
-              <a 
-                target="_blank" 
-                href="https://www.linkedin.com/in/shahjalal-bu/" 
-                className="text-foreground hover:text-blue-600 transition-all duration-300 transform hover:scale-110"
-              >
-                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
-                  <AiFillLinkedin size={32} />
-                </div>
-              </a>
-              <a 
-                target="_blank" 
-                href="https://fb.com/shahjalal.bu" 
-                className="text-foreground hover:text-blue-500 transition-all duration-300 transform hover:scale-110"
-              >
-                <div className="p-3 rounded-xl bg-gradient-glow hover:glow-blue transition-all duration-300">
-                  <AiFillFacebook size={32} />
-                </div>
-              </a>
-            </div>
-          </div>
-          
-          <div className="rounded-2xl flex items-center justify-center p-6 sm:p-10 relative">
-            {/* Glowing effect behind animation */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-violet-500/10 rounded-2xl blur-xl" />
-            <div className="relative">
-              <Player
-                autoplay
-                loop
-                src="https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json"
-                className="w-96 h-72 drop-shadow-2xl"
-              />
+            {/* Right Animation */}
+            <div className="flex items-center justify-center" data-animate>
+              <div className="relative w-full max-w-md">
+                <Player
+                  autoplay
+                  loop
+                  src="https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -139,33 +138,35 @@ export default function Home() {
 
       {/* Other Sections - With Container */}
       <div className="container mx-auto px-4">
-        <div id="about">
+        <div id="about" data-animate>
           <About />
         </div>
         
         {/* Separator */}
-        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
         
-        <div id="projects">
+        <div id="projects" data-animate>
           <Project />
         </div>
         
         {/* Separator */}
-        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
         
-        <LoveToDo />
+        <div data-animate>
+          <LoveToDo />
+        </div>
         
         {/* Separator */}
-        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
         
-        <div id="blog">
+        <div id="blog" data-animate>
           <Blogs />
         </div>
         
         {/* Separator */}
-        <div className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
         
-        <div id="contact">
+        <div id="contact" data-animate>
           <Contact />
         </div>
       </div>

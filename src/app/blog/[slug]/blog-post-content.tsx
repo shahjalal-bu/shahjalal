@@ -13,6 +13,7 @@ import CommentsSection from '@/components/blog/comments-section';
 import Breadcrumb from '@/components/blog/breadcrumb';
 import { getSession } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
+import DeletePostButton from '@/components/blog/delete-post-button';
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -95,14 +96,17 @@ export default async function BlogPostContent({ post, relatedPosts, seriesPosts 
                   </div>
                 </div>
                 
-                {/* Edit Button - Only visible to admins */}
+                {/* Admin Buttons - Only visible to admins */}
                 {isAdmin && (
-                  <Link href={`/admin/posts/edit/${post.id}`}>
-                    <Button variant="outline" size="sm" className="gap-2">
-                      <Edit className="w-4 h-4" />
-                      Edit Post
-                    </Button>
-                  </Link>
+                  <div className="flex gap-2">
+                    <Link href={`/admin/posts/edit/${post.id}`}>
+                      <Button variant="outline" size="sm" className="gap-2">
+                        <Edit className="w-4 h-4" />
+                        Edit Post
+                      </Button>
+                    </Link>
+                    <DeletePostButton postId={post.id} postTitle={post.title} />
+                  </div>
                 )}
               </div>
             </div>
@@ -119,7 +123,7 @@ export default async function BlogPostContent({ post, relatedPosts, seriesPosts 
 
             {/* Comments Section */}
             <div className="mb-8">
-              <CommentsSection />
+              <CommentsSection postSlug={post.slug} />
             </div>
           </main>
 

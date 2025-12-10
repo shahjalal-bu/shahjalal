@@ -34,15 +34,43 @@ export const seriesRelations = relations(blogSeries, ({ many }) => ({
     posts: many(blogPosts),
 }));
 
-export const postsRelations = relations(blogPosts, ({ one }) => ({
+export const postsRelations = relations(blogPosts, ({ one, many }) => ({
     series: one(blogSeries, {
         fields: [blogPosts.seriesId],
         references: [blogSeries.id],
+    }),
+    comments: many(blogComments),
+}));
+
+export const blogComments = pgTable('blog_comments', {
+    id: serial('id').primaryKey(),
+    postSlug: text('post_slug').notNull(),
+    author: text('author').notNull(),
+    content: text('content').notNull(),
+    likes: integer('likes').notNull().default(0),
+    parentId: integer('parent_id').references((): any => blogComments.id, { onDelete: 'cascade' }),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+});
+
+export const commentsRelations = relations(blogComments, ({ one, many }) => ({
+    post: one(blogPosts, {
+        fields: [blogComments.postSlug],
+        references: [blogPosts.slug],
+    }),
+    parent: one(blogComments, {
+        fields: [blogComments.parentId],
+        references: [blogComments.id],
+        relationName: 'replies'
+    }),
+    replies: many(blogComments, {
+        relationName: 'replies'
     }),
 }));
 
 export type BlogSeries = typeof blogSeries.$inferSelect;
 
-
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type NewBlogPost = typeof blogPosts.$inferInsert;
+
+export type BlogComment = typeof blogComments.$inferSelect;
+export type NewBlogComment = typeof blogComments.$inferInsert;

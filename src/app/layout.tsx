@@ -75,7 +75,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} ${lato.variable} ${grandHotel.variable} ${luckiestGuy.variable} bg-background text-foreground relative`}>
+      <body className={`${inter.className} ${lato.variable} ${grandHotel.variable} ${luckiestGuy.variable} bg-background text-foreground relative`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

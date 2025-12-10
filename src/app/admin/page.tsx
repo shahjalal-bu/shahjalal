@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Layers, Edit, Eye } from 'lucide-react';
 import { count, desc } from 'drizzle-orm';
 import Link from 'next/link';
+import AdminDeleteButton from '@/components/admin/admin-delete-button';
 
 export default async function AdminDashboard() {
   const postsCount = await db.select({ count: count() }).from(blogPosts);
@@ -101,6 +102,7 @@ export default async function AdminDashboard() {
                       Edit
                     </Button>
                   </Link>
+                  <AdminDeleteButton postId={post.id} postTitle={post.title} />
                 </div>
               </div>
             ))}

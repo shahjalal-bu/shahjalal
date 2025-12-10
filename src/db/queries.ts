@@ -164,3 +164,14 @@ export async function searchPosts(query: string): Promise<BlogPost[]> {
         new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 }
+
+export async function deletePost(postId: number): Promise<{ success: boolean; error?: string }> {
+    try {
+        await db.delete(blogPosts)
+            .where(eq(blogPosts.id, postId));
+        return { success: true };
+    } catch (error) {
+        console.error('Failed to delete post:', error);
+        return { success: false, error: 'Failed to delete post' };
+    }
+}

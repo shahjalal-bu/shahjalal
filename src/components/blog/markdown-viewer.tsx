@@ -1,9 +1,13 @@
 "use client"
 
+import { useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import 'katex/dist/katex.min.css';
 
 interface MarkdownViewerProps {
   content: string;
@@ -11,10 +15,30 @@ interface MarkdownViewerProps {
 }
 
 export default function MarkdownViewer({ content, className = '' }: MarkdownViewerProps) {
+  // Track heading counters in a stable way that works for SSR
+  const headingCounters = useMemo(() => new Map<string, number>(), [content]);
+  
+  const generateUniqueId = (text: string): string => {
+    let baseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+    
+    // Ensure ID is not empty
+    if (!baseId) {
+      baseId = 'heading';
+    }
+    
+    // Make ID unique if it already exists
+    const count = headingCounters.get(baseId) || 0;
+    headingCounters.set(baseId, count + 1);
+    
+    // Only add suffix if this is a duplicate
+    return count > 0 ? `${baseId}-${count}` : baseId;
+  };
+
   return (
     <div className={`markdown-viewer prose prose-lg max-w-none dark:prose-invert ${className}`}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
         components={{
           code({ node, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || '');
@@ -52,7 +76,7 @@ export default function MarkdownViewer({ content, className = '' }: MarkdownView
           },
           h1: ({ node, className, children, ...props }) => {
             const text = String(children);
-            const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+            const id = generateUniqueId(text);
             return (
               <h1 id={id} className="text-4xl font-bold mt-8 mb-4 text-foreground scroll-mt-24" {...props}>
                 {children}
@@ -61,7 +85,7 @@ export default function MarkdownViewer({ content, className = '' }: MarkdownView
           },
           h2: ({ node, className, children, ...props }) => {
             const text = String(children);
-            const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+            const id = generateUniqueId(text);
             return (
               <h2 id={id} className="text-3xl font-bold mt-6 mb-3 text-foreground scroll-mt-24" {...props}>
                 {children}
@@ -70,7 +94,7 @@ export default function MarkdownViewer({ content, className = '' }: MarkdownView
           },
           h3: ({ node, className, children, ...props }) => {
             const text = String(children);
-            const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+            const id = generateUniqueId(text);
             return (
               <h3 id={id} className="text-2xl font-semibold mt-4 mb-2 text-foreground scroll-mt-24" {...props}>
                 {children}

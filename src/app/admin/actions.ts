@@ -130,3 +130,15 @@ export async function updatePostAction(postId: number, formData: FormData) {
         return { error: 'Failed to update post' };
     }
 }
+
+export async function deletePostAction(postId: number) {
+    try {
+        await db.delete(blogPosts)
+            .where(eq(blogPosts.id, postId));
+
+        return { success: true };
+    } catch (error) {
+        console.error('Failed to delete post:', error);
+        return { error: 'Failed to delete post' };
+    }
+}

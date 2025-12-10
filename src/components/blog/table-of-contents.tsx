@@ -24,6 +24,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     const lines = content.split('\n');
     console.log(lines);
     const extractedHeadings: TOCItem[] = [];
+    const seenIds = new Map<string, number>(); // Track duplicate IDs
     
     lines.forEach((line) => {
         const trimLine = line.trim();
@@ -32,7 +33,23 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
       if (match) {
         const level = match[1].length;
         const text = match[2];
-        const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        let baseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        
+        // Ensure ID is not empty
+        if (!baseId) {
+          baseId = 'heading';
+        }
+        
+        // Make ID unique if it already exists
+        let id = baseId;
+        if (seenIds.has(baseId)) {
+          const count = seenIds.get(baseId)! + 1;
+          seenIds.set(baseId, count);
+          id = `${baseId}-${count}`;
+        } else {
+          seenIds.set(baseId, 0);
+        }
+        
         extractedHeadings.push({ id, text, level });
       }
     });
@@ -42,13 +59,22 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     // Set up intersection observer for active state
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
+        // Find all currently intersecting entries
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        
+        if (visibleEntries.length > 0) {
+          // Get the topmost visible heading
+          const topEntry = visibleEntries.reduce((top, entry) => {
+            return entry.boundingClientRect.top < top.boundingClientRect.top ? entry : top;
+          });
+          
+          setActiveId(topEntry.target.id);
+        }
       },
-      { rootMargin: '-100px 0px -66%' }
+      {
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1]
+      }
     );
 
     extractedHeadings.forEach(({ id }) => {
@@ -60,6 +86,20 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
 
     return () => observer.disconnect();
   }, [content]);
+
+  // Auto-scroll active item into view
+  useEffect(() => {
+    if (activeId) {
+      const activeElement = document.querySelector(`a[href="#${activeId}"]`);
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest'
+        });
+      }
+    }
+  }, [activeId]);
 
   if (headings.length === 0) {
     return (
