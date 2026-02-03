@@ -43,22 +43,22 @@ export default async function BlogPostContent({ post, relatedPosts, seriesPosts 
   const isAdmin = !!session;
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-20">
+    <div className="min-h-screen bg-background text-foreground pt-2">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
           {/* Left Sidebar - Table of Contents */}
-          <aside className="lg:col-span-2 order-2 lg:order-1">
+          <aside className="lg:col-span-3 order-2 lg:order-1">
             <div className="sticky top-24">
               <TableOfContents content={post.content} />
             </div>
           </aside>
 
           {/* Middle - Main Content */}
-          <main className="lg:col-span-8 order-1 lg:order-2">
+          <main className="lg:col-span-6 order-1 lg:order-2">
             {/* Article Header */}
             <div className="mb-8">
               {/* Tags */}
@@ -75,7 +75,7 @@ export default async function BlogPostContent({ post, relatedPosts, seriesPosts 
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gradient-primary pb-1">
+              <h1 className="text-2xl md:text-4xl font-bold mb-4 leading-normal text-foreground pb-1">
                 {post.title}
               </h1>
 
@@ -128,8 +128,8 @@ export default async function BlogPostContent({ post, relatedPosts, seriesPosts 
           </main>
 
           {/* Right Sidebar - Series, Popular Posts, Share */}
-          <aside className="lg:col-span-2 order-3">
-            <div className="sticky top-24 space-y-4">
+          <aside className="lg:col-span-3 order-3">
+            <div className="sticky top-24 space-y-3">
               {/* Series Navigation */}
               {seriesPosts.length > 0 && post.series && (
                 <SeriesNavigation 

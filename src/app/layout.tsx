@@ -5,6 +5,8 @@ import GotoTop from '@/components/layout/goto-top'
 import Preloader from '@/components/layout/preloader'
 import { Metadata } from 'next'
 import ActiveSectionContextProvider from '@/context/active-section-context'
+import { CodeShareProvider } from '@/context/code-share-context'
+import { LiveShareProvider } from '@/context/live-share-context'
 
 const lato = Lato({
   weight: ["300", "400", "700", "900"],
@@ -82,14 +84,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ActiveSectionContextProvider>
-            <Preloader />
-            <Header />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <GotoTop />
-          </ActiveSectionContextProvider>
+          <LiveShareProvider>
+            <CodeShareProvider>
+              <ActiveSectionContextProvider>
+                <Preloader />
+                <Header />
+                <main className="min-h-screen">
+                  {children}
+                </main>
+                <GotoTop />
+              </ActiveSectionContextProvider>
+            </CodeShareProvider>
+          </LiveShareProvider>
         </ThemeProvider>
       </body>
     </html>

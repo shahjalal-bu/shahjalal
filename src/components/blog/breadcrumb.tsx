@@ -25,7 +25,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               {item.label}
             </Link>
           ) : (
-            <span className="text-foreground font-medium">{item.label}</span>
+            <span className="text-foreground font-medium truncate max-w-[200px] md:max-w-[500px] block">{item.label}</span>
           )}
           {index < items.length - 1 && (
             <ChevronRight className="w-4 h-4" />

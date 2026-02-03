@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mdshahjalal.netlify.app
+
+# Sitemaps
+Sitemap: https://mdshahjalal.netlify.app/sitemap.xml

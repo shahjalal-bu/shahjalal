@@ -90,6 +90,15 @@ export default function Header() {
       </li>
       <li className="p-1 font-normal">
         <Link 
+          href="/utilities" 
+          onClick={() => setActiveSection("utilities")}
+          className={`flex items-center hover:text-amber-500 transition-colors ${activeSection === 'utilities' ? "text-amber-500" : 'text-slate-700 dark:text-slate-200'}`}
+        >
+          Utilities
+        </Link>
+      </li>
+      <li className="p-1 font-normal">
+        <Link 
           href="/#contact" 
           onClick={() => setActiveSection("contact")}
           className={`flex items-center hover:text-amber-500 transition-colors ${activeSection === 'contact' ? "text-amber-500" : 'text-slate-700 dark:text-slate-200'}`}

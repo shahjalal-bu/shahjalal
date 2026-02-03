@@ -144,9 +144,11 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
               className={cn(
                 "block py-1.5 px-3 text-sm transition-all duration-200 border-l-2 relative group",
                 heading.level === 3 && "pl-6",
+                heading.level === 4 && "pl-9",
+                heading.level >= 5 && "pl-12",
                 activeId === heading.id
-                  ? "border-primary text-primary font-medium bg-primary/5"
-                  : "border-transparent text-muted-foreground hover:text-foreground hover:border-border hover:bg-muted/30"
+                  ? "border-primary text-foreground font-medium bg-primary/10"
+                  : "border-transparent text-foreground/70 hover:text-foreground hover:bg-muted/30"
               )}
             >
               {heading.text}
