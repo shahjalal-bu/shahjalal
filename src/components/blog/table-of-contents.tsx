@@ -87,20 +87,6 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
     return () => observer.disconnect();
   }, [content]);
 
-  // Auto-scroll active item into view
-  useEffect(() => {
-    if (activeId) {
-      const activeElement = document.querySelector(`a[href="#${activeId}"]`);
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'nearest'
-        });
-      }
-    }
-  }, [activeId]);
-
   if (headings.length === 0) {
     return (
       <Card className="bg-card border-border">

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://mdshahjalal.netlify.app/admin/login</loc><lastmod>2026-02-03T10:02:31.071Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/admin</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/admin/posts/new</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/admin/series/new</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/blog/editor</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/blog</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/blog/series</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/code-share-test</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/code-share</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/example-code-share</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/live-share</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://mdshahjalal.netlify.app/utilities</loc><lastmod>2026-02-03T10:02:31.072Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/admin/login</loc><lastmod>2026-02-05T15:19:44.818Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/admin</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/admin/posts/new</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/admin/series/new</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/blog/editor</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/blog</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/blog/series</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/code-share-test</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/code-share</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/example-code-share</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/live-share</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://mdshahjalal.netlify.app/utilities</loc><lastmod>2026-02-05T15:19:44.819Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
